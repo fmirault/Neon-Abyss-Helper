@@ -1,0 +1,8 @@
+/* Copyright © Neon Abyss Explorer. All rights reserved. */
+
+// TabbarView
+"tabbar.characters" = "Characters";
+"tabbar.weapons" = "Weapons";
+"tabbar.items" = "Items";
+"tabbar.pets" = "Pets";
+"tabbar.achievements" = "Achievements";

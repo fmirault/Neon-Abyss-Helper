@@ -1,0 +1,8 @@
+/* Copyright © Neon Abyss Explorer. All rights reserved. */
+
+// TabbarView
+"tabbar.characters" = "Personnages";
+"tabbar.weapons" = "Armes";
+"tabbar.items" = "Objets";
+"tabbar.pets" = "Familiers";
+"tabbar.achievements" = "Succès";
