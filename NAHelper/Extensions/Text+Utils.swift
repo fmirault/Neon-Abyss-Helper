@@ -7,7 +7,7 @@ extension Text {
     func applyCardTitle() -> some View {
         font(.title2)
             .fontWeight(.bold)
-            .foregroundColor(Color.darkText)
+            .foregroundColor(Color.greyText)
             .lineLimit(2)
     }
     
