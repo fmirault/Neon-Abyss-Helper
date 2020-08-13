@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum DisplayMode: Int, CaseIterable {
+enum DisplayMode: String, CaseIterable {
     case list, cards, grid
     
     var iconName: String {

@@ -3,13 +3,21 @@
 import Foundation
 import Combine
 
-protocol ItemsListViewModelType: ObservableObject {
-    var items: [Item] { get }
-}
-
-class ItemsListViewModel: ItemsListViewModelType {
+class ItemsListViewModel: ObservableObject {
     
-    @Published var items: [Item] = []
+    private var items: [Item] = []
+    
+    @Published var sortedItems: [Item] = []
+    @Published var sort: SortingMode? {
+        didSet {
+            guard let sort = sort else { return }
+            switch sort {
+            case .id: sortedItems = items
+            case .name: sortedItems = items.sorted { $0.name.compare($1.name) == .orderedAscending }
+            case .color: sortedItems = items.sorted { $0.colorOrder.compare($1.colorOrder) == .orderedAscending }
+            }
+        }
+    }
     
     init() {
         loadData()

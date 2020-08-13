@@ -5,14 +5,22 @@ import SwiftUI
 struct ItemsList: View {
     
     @Namespace private var itemsNamespace
-    @StateObject private var viewModel = ItemsListViewModel()
     @EnvironmentObject var appUserDefaults: AppUserDefaults
+    @StateObject private var viewModel = ItemsListViewModel()
     
     var body: some View {
         NavigationView {
             contentView
                 .navigationBarTitle(Text(L10n.TabBar.items))
-                .navigationBarItems(trailing: trailingDisplayButton)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack(spacing: AppConfig.Design.Margins.medium) {
+                            sortMenuButton
+                            displayModeButton
+                        }
+                    }
+                }
+                .onAppear(perform: { viewModel.sort = appUserDefaults.preferredSortingMode })
         }
     }
     
@@ -30,7 +38,23 @@ struct ItemsList: View {
     
     // MARK: - Private
     
-    private var trailingDisplayButton: some View {
+    private var sortMenuButton: some View {
+        Menu {
+            Picker(selection: $appUserDefaults.preferredSortingMode, label: Text("Sorting options")) {
+                ForEach(SortingMode.allCases, id: \.self) {
+                    Label($0.title, systemImage: $0.iconName).tag($0.rawValue)
+                }
+            }
+            .onChange(of: appUserDefaults.preferredSortingMode) { viewModel.sort = $0 }
+        }
+        label: {
+            Button(action: { }) { Image(systemName: "tray.full.fill") }
+                .accentColor(.secondarySystemBackground)
+                .buttonStyle(RoundedBarButtonStyle())
+        }
+    }
+    
+    private var displayModeButton: some View {
         Button(action: {
             switch appUserDefaults.preferredDisplayMode {
             case .list: appUserDefaults.preferredDisplayMode = .cards
@@ -40,22 +64,22 @@ struct ItemsList: View {
         }) {
             Image(systemName: appUserDefaults.preferredDisplayMode.iconName)
         }
-        .buttonStyle(RoundedBarButtonStyle())
         .accentColor(.secondarySystemBackground)
+        .buttonStyle(RoundedBarButtonStyle())
     }
     
     private var gridView: some View {
         let columns = [GridItem(.adaptive(minimum: 80, maximum: 120), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemGridView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { ItemGridView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
     
     private var listView: some View {
         LazyVStack(alignment: .leading, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemRowView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { ItemRowView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
@@ -64,7 +88,7 @@ struct ItemsList: View {
         let columns = [GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium), GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemCardView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { ItemCardView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }

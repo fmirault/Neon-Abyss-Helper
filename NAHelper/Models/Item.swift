@@ -8,6 +8,7 @@ struct Item: Codable, Equatable, Identifiable, Hashable {
     let image: String
     let name: String
     let slug: String
+    let colorOrder: String
     let tags: [String]
     
     public func hash(into hasher: inout Hasher) {
@@ -15,6 +16,6 @@ struct Item: Codable, Equatable, Identifiable, Hashable {
     }
     
     private enum CodingKeys : String, CodingKey {
-        case description, image, name, slug, tags
+        case description, image, name, slug, tags, colorOrder
     }
 }

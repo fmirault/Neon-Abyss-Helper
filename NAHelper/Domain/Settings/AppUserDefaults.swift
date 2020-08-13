@@ -13,5 +13,12 @@ class AppUserDefaults: ObservableObject {
         }
     }
     
+    @AppStorage("preferredSortingMode")
+    var preferredSortingMode: SortingMode = .id {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+    
 }
 

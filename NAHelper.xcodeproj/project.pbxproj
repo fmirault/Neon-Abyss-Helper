@@ -15,7 +15,7 @@
 		5F70D7AE24DCAEEF00454A88 /* Image+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70D7AD24DCAEEF00454A88 /* Image+Utils.swift */; };
 		5F70D84724DD311300454A88 /* Text+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70D84624DD311300454A88 /* Text+Utils.swift */; };
 		5F70D84A24DD49C800454A88 /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 5F70D84924DD49C800454A88 /* Resolver */; };
-		5F70D84C24DD49E700454A88 /* App+Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F70D84B24DD49E700454A88 /* App+Injection.swift */; };
+		5F8171DD24E5AF4F00605A37 /* SortingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8171DC24E5AF4F00605A37 /* SortingMode.swift */; };
 		5F9BE82D24D9B2780062074F /* ItemRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9BE82C24D9B2780062074F /* ItemRowView.swift */; };
 		5F9BE8C924D9B58B0062074F /* Item+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9BE8C824D9B58B0062074F /* Item+Fixture.swift */; };
 		5F9BE8CB24D9B9B50062074F /* ItemsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9BE8CA24D9B9B50062074F /* ItemsListViewModel.swift */; };
@@ -53,7 +53,7 @@
 		5F5A623A24DC4E5E00CA7DF1 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
 		5F70D7AD24DCAEEF00454A88 /* Image+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Utils.swift"; sourceTree = "<group>"; };
 		5F70D84624DD311300454A88 /* Text+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Utils.swift"; sourceTree = "<group>"; };
-		5F70D84B24DD49E700454A88 /* App+Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Injection.swift"; sourceTree = "<group>"; };
+		5F8171DC24E5AF4F00605A37 /* SortingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingMode.swift; sourceTree = "<group>"; };
 		5F9BE82C24D9B2780062074F /* ItemRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRowView.swift; sourceTree = "<group>"; };
 		5F9BE8C824D9B58B0062074F /* Item+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Fixture.swift"; sourceTree = "<group>"; };
 		5F9BE8CA24D9B9B50062074F /* ItemsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListViewModel.swift; sourceTree = "<group>"; };
@@ -231,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				5FB8562C24D9405B002BE149 /* App.swift */,
-				5F70D84B24DD49E700454A88 /* App+Injection.swift */,
 				5FB8564124D94189002BE149 /* TabBarView.swift */,
 				5FB8564324D94301002BE149 /* TabBarState.swift */,
 			);
@@ -271,6 +270,7 @@
 			children = (
 				5FC19C1324DB3B2400862366 /* AppUserDefaults.swift */,
 				5FC19C1524DB3B6600862366 /* DisplayMode.swift */,
+				5F8171DC24E5AF4F00605A37 /* SortingMode.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 				5F9BE8CB24D9B9B50062074F /* ItemsListViewModel.swift in Sources */,
 				5F44AB0B24DDF10A00AC9698 /* L10n.swift in Sources */,
 				5F9BE8C924D9B58B0062074F /* Item+Fixture.swift in Sources */,
+				5F8171DD24E5AF4F00605A37 /* SortingMode.swift in Sources */,
 				5F9BE8DC24D9F5590062074F /* DevicesConstants.swift in Sources */,
 				5F5A623924DC4CBB00CA7DF1 /* UIView+Utils.swift in Sources */,
 				5F9BE97A24DB196D0062074F /* AppConfig.swift in Sources */,
@@ -405,7 +406,6 @@
 				5FC19C1F24DB456E00862366 /* WeaponsList.swift in Sources */,
 				5F70D7AE24DCAEEF00454A88 /* Image+Utils.swift in Sources */,
 				5F44AB0D24DDF1C600AC9698 /* Assets.swift in Sources */,
-				5F70D84C24DD49E700454A88 /* App+Injection.swift in Sources */,
 				5FC19C1A24DB427300862366 /* Shadow.swift in Sources */,
 				5F44AB0924DDF0BA00AC9698 /* RoundedBarButtonStyle.swift in Sources */,
 				5FB295D624DC038100243495 /* CharactersList.swift in Sources */,

@@ -1,6 +1,5 @@
 // Copyright © Neon Abyss Explorer. All rights reserved.
 
-import Resolver
 import SwiftUI
 
 @main
@@ -21,7 +20,6 @@ struct NAHelperApp: App {
             .environmentObject(appUserDefaults)
             .onAppear(perform: {
                 Design.setupAppearance()
-                Resolver.registerAllServices()
             })
     }
     
