@@ -8,7 +8,7 @@ struct Item: Codable, Equatable, Identifiable, Hashable {
     let image: String
     let name: String
     let slug: String
-    let colorOrder: String
+    let colorOrder: Int
     let tags: [String]
     
     public func hash(into hasher: inout Hasher) {

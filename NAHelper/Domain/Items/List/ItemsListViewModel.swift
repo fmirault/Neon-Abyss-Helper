@@ -13,8 +13,8 @@ class ItemsListViewModel: ObservableObject {
             guard let sort = sort else { return }
             switch sort {
             case .id: sortedItems = items
-            case .name: sortedItems = items.sorted { $0.name.compare($1.name) == .orderedAscending }
-            case .color: sortedItems = items.sorted { $0.colorOrder.compare($1.colorOrder) == .orderedAscending }
+            case .name: sortedItems = items.sorted { $0.name < $1.name }
+            case .color: sortedItems = items.sorted { $0.colorOrder < $1.colorOrder }
             }
         }
     }
