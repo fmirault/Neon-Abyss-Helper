@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ItemsList: View {
     
+    @Namespace private var itemsNamespace
     @StateObject private var viewModel = ItemsListViewModel()
     @EnvironmentObject var appUserDefaults: AppUserDefaults
     
@@ -25,7 +26,6 @@ struct ItemsList: View {
             case .cards: cardsView
             }
         }
-
     }
     
     // MARK: - Private
@@ -48,14 +48,14 @@ struct ItemsList: View {
         let columns = [GridItem(.adaptive(minimum: 80, maximum: 120), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemGridView(item: $0) }
+            ForEach(viewModel.items) { ItemGridView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
     
     private var listView: some View {
         LazyVStack(alignment: .leading, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemRowView(item: $0) }
+            ForEach(viewModel.items) { ItemRowView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
@@ -64,7 +64,7 @@ struct ItemsList: View {
         let columns = [GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium), GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.items) { ItemCardView(item: $0) }
+            ForEach(viewModel.items) { ItemCardView(namespace: itemsNamespace, item: $0) }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }

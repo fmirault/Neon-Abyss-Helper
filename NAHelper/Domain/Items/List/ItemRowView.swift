@@ -4,11 +4,15 @@ import SwiftUI
 
 struct ItemRowView: View {
     
+    let namespace: Namespace.ID
     var item: Item
     
     var body: some View {
         HStack(spacing: AppConfig.Design.Margins.medium) {
-            LocalFile(item.image).image.applyImageStyle()
+            LocalFile(item.image).image
+                .applyImageStyle()
+                .matchedGeometryEffect(id: item.name, in: namespace)
+            
             titleAndDescription
         }
         .fullWidth()
@@ -31,10 +35,11 @@ struct ItemRowView: View {
 
 #if DEBUG
 struct ItemRowView_Previews: PreviewProvider {
+    @Namespace private static var namespace
     static var previews: some View {
         ForEach([AllDeviceNames.iPhone11.rawValue], id: \.self) { devicesName in
             ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                ItemRowView(item: 🧬.brocoli)
+                ItemRowView(namespace: namespace, item: 🧬.brocoli)
                     .previewLayout(.sizeThatFits)
                     .padding()
                     .preferredColorScheme(colorScheme)
