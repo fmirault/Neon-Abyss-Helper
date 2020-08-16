@@ -3,12 +3,13 @@
 import Foundation
 
 enum SortingMode: String, CaseIterable {
-    case id, name, color
+    case id, name, type, color
     
     var title: String {
         switch self {
         case .id: return "By ID"
         case .name: return "By name"
+        case .type: return "By type"
         case .color: return "By color"
         }
     }
@@ -17,7 +18,8 @@ enum SortingMode: String, CaseIterable {
         switch self {
         case .id: return "tag.fill"
         case .name: return "book.fill"
-        case .color: return "eyedropper.halffull"
+        case .type: return "wrench.fill"
+        case .color: return "paintbrush.fill"
         }
     }
 }

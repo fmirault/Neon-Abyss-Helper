@@ -31,6 +31,7 @@ struct ItemCardView: View {
             Text(item.name)
                 .applyCardTitle()
                 .multilineTextAlignment(.center)
+                .lineLimit(2)
         }
         .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
     }
@@ -39,6 +40,7 @@ struct ItemCardView: View {
         Text(item.description)
             .applyCardDescription()
             .multilineTextAlignment(.center)
+            .lineLimit(2)
     }
     
 }

@@ -26,8 +26,13 @@ struct ItemRowView: View {
     
     private var titleAndDescription: some View {
         VStack(alignment: .leading, spacing: AppConfig.Design.Margins.verySmall) {
-            Text(item.name).applyCardTitle()
-            Text(item.description).applyCardDescription()
+            Text(item.name)
+                .applyCardTitle()
+                .lineLimit(2)
+            
+            Text(item.description)
+                .applyCardDescription()
+                .lineLimit(2)
         }
     }
     

@@ -11,6 +11,7 @@ struct AppConfig {
             static let medium: CGFloat = 16.0
             static let small: CGFloat = 12.0
             static let verySmall: CGFloat = 8.0
+            static let veryVerySmall: CGFloat = 4.0
         }
         
         enum CornerRadius {

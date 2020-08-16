@@ -8,14 +8,16 @@ extension Text {
         font(.title2)
             .fontWeight(.bold)
             .foregroundColor(Color.greyText)
-            .lineLimit(2)
     }
     
     func applyCardDescription() -> some View {
         font(.caption)
             .foregroundColor(Color.secondaryLabel)
-            .lineLimit(2)
-            
+    }
+    
+    func applyCardTag() -> some View {
+        font(.caption2)
+            .foregroundColor(Color.greyText)
     }
     
 }

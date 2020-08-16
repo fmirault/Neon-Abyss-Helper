@@ -2,11 +2,17 @@
 
 import SwiftUI
 
+enum ListContentMode {
+    case list
+    case details
+}
+
 struct ItemsList: View {
     
     @Namespace private var itemsNamespace
     @EnvironmentObject var appUserDefaults: AppUserDefaults
     @StateObject private var viewModel = ItemsListViewModel()
+    @State private var presentedSheet: Sheet.SheetType?
     
     var body: some View {
         NavigationView {
@@ -20,19 +26,22 @@ struct ItemsList: View {
                         }
                     }
                 }
-                .onAppear(perform: { viewModel.sort = appUserDefaults.preferredSortingMode })
         }
     }
     
     @ViewBuilder
     private var contentView: some View {
-
-        ScrollView {
-            switch appUserDefaults.preferredDisplayMode {
-            case .grid: gridView
-            case .list: listView
-            case .cards: cardsView
+        GeometryReader { geometry in
+            ScrollView {
+                switch appUserDefaults.preferredDisplayMode {
+                case .grid: gridView
+                case .list: listView
+                case .cards: cardsView
+                }
             }
+            .preference(key: SortingModePreferenceKey.self, value: appUserDefaults.preferredSortingMode)
+            .onPreferenceChange(SortingModePreferenceKey.self) { viewModel.sort = $0 }
+            .sheet(item: $presentedSheet, content: { Sheet(sheetType: $0) })
         }
     }
     
@@ -45,7 +54,6 @@ struct ItemsList: View {
                     Label($0.title, systemImage: $0.iconName).tag($0.rawValue)
                 }
             }
-            .onChange(of: appUserDefaults.preferredSortingMode) { viewModel.sort = $0 }
         }
         label: {
             Button(action: { }) { Image(systemName: "tray.full.fill") }
@@ -72,14 +80,24 @@ struct ItemsList: View {
         let columns = [GridItem(.adaptive(minimum: 80, maximum: 120), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { ItemGridView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { item in
+                ItemGridView(namespace: itemsNamespace, item: item)
+                    .onTapGesture {
+                        presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))
+                    }
+            }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
     
     private var listView: some View {
         LazyVStack(alignment: .leading, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { ItemRowView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { item in
+                ItemRowView(namespace: itemsNamespace, item: item)
+                    .onTapGesture {
+                        presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))
+                    }
+            }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }
@@ -88,7 +106,12 @@ struct ItemsList: View {
         let columns = [GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium), GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { ItemCardView(namespace: itemsNamespace, item: $0) }
+            ForEach(viewModel.sortedItems) { item in
+                ItemCardView(namespace: itemsNamespace, item: item)
+                    .onTapGesture {
+                        presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))
+                    }
+            }
         }
         .padding(.horizontal, AppConfig.Design.Margins.medium)
     }

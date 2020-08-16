@@ -6,7 +6,11 @@ import Foundation
 extension Item {
     enum Fixture {
         static var brocoli: Item {
-            Item(description: "Broccolis are so good...", image: "Broccoli", name: "Broccoli", slug: "broccoli", colorOrder: 1, tags: ["item","player-stat"])
+            Item(description: "Broccolis are so good...", image: "Broccoli", name: "Broccoli", slug: "broccoli", colorOrder: 1, tags: ["player-stat"])
+        }
+        
+        static var sashimiSushi: Item {
+            Item(description: "But Sushis are better!", image: "Sashimi_Sushi", name: "Sashimi Sushi", slug: "sashimi", colorOrder: 1, tags: ["player-stat"])
         }
         
         static func make(id: UUID = UUID(), description: String, name: String, image: String, slug: String, colorOrder: Int, tags: [String]) -> Item {
