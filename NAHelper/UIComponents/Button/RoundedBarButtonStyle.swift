@@ -12,7 +12,7 @@ struct RoundedBarButtonStyle: ButtonStyle {
             .padding(AppConfig.Design.Margins.small)
             .foregroundColor(Color.label)
             .frame(width: 40.0, height: 40.0)
-            .background(RoundedRectangle(cornerRadius: 50).foregroundColor(Color.accentColor))
+            .background(RoundedRectangle(cornerRadius: 50).foregroundColor(Color.clear))
             .scaleEffect(configuration.isPressed ? 0.85 : 1)
             .animation(.interactiveSpring())
     }

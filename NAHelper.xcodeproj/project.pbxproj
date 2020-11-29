@@ -313,10 +313,10 @@
 		5FC19C1724DB425D00862366 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				5F9CF65424E994A900279C3A /* Sheets */,
 				5F9CF65124E915A700279C3A /* BottomSheet */,
 				5F44AB0724DDF0AF00AC9698 /* Button */,
 				5FC19C1824DB426600862366 /* Modifiers */,
+				5F9CF65424E994A900279C3A /* Sheets */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
