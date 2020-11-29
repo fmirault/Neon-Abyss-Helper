@@ -32,6 +32,7 @@
 		5F9CF65624E994B400279C3A /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CF65524E994B400279C3A /* Sheet.swift */; };
 		5F9CF65F24E9A3BB00279C3A /* ItemDetailsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CF65E24E9A3BB00279C3A /* ItemDetailsGridView.swift */; };
 		5F9CF66124E9DB0500279C3A /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CF66024E9DB0500279C3A /* Array+Utils.swift */; };
+		5FADD8C724F6BE2700774149 /* UIElementPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADD8C624F6BE2700774149 /* UIElementPreview.swift */; };
 		5FB295D124DC005400243495 /* RadialBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB295D024DC005400243495 /* RadialBackground.swift */; };
 		5FB295D324DC023D00243495 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB295D224DC023D00243495 /* Local.swift */; };
 		5FB295D624DC038100243495 /* CharactersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB295D524DC038100243495 /* CharactersList.swift */; };
@@ -76,6 +77,7 @@
 		5F9CF65524E994B400279C3A /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		5F9CF65E24E9A3BB00279C3A /* ItemDetailsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsGridView.swift; sourceTree = "<group>"; };
 		5F9CF66024E9DB0500279C3A /* Array+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		5FADD8C624F6BE2700774149 /* UIElementPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementPreview.swift; sourceTree = "<group>"; };
 		5FB295D024DC005400243495 /* RadialBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialBackground.swift; sourceTree = "<group>"; };
 		5FB295D224DC023D00243495 /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		5FB295D524DC038100243495 /* CharactersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersList.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				5FB295D724DC132900243495 /* Design.swift */,
 				5F9BE8DB24D9F5590062074F /* DevicesConstants.swift */,
 				5FB295D224DC023D00243495 /* Local.swift */,
+				5FADD8C624F6BE2700774149 /* UIElementPreview.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			files = (
 				5F9BE8D924D9F16C0062074F /* Item.swift in Sources */,
 				5FB8564724D94792002BE149 /* ItemsList.swift in Sources */,
+				5FADD8C724F6BE2700774149 /* UIElementPreview.swift in Sources */,
 				5FB8564424D94301002BE149 /* TabBarState.swift in Sources */,
 				5F9BE82D24D9B2780062074F /* ItemRowView.swift in Sources */,
 				5FC19C1124DB1C3B00862366 /* ItemCardView.swift in Sources */,
@@ -593,6 +597,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NAHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = EGNPX4RLTR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NAHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -600,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fabienmirault.NAHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tnfconcept.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -614,6 +619,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NAHelper/Preview Content\"";
+				DEVELOPMENT_TEAM = EGNPX4RLTR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NAHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -621,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fabienmirault.NAHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tnfconcept.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

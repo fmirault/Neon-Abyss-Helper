@@ -18,31 +18,27 @@ struct ItemsList: View {
         NavigationView {
             contentView
                 .navigationBarTitle(Text(L10n.TabBar.items))
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack(spacing: AppConfig.Design.Margins.medium) {
-                            sortMenuButton
-                            displayModeButton
-                        }
+                .navigationBarItems(trailing:
+                    HStack(spacing: AppConfig.Design.Margins.medium) {
+                        sortMenuButton
+                        displayModeButton
                     }
-                }
+                )
         }
     }
     
     @ViewBuilder
     private var contentView: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                switch appUserDefaults.preferredDisplayMode {
-                case .grid: gridView
-                case .list: listView
-                case .cards: cardsView
-                }
+        ScrollView {
+            switch appUserDefaults.preferredDisplayMode {
+            case .grid: gridView
+            case .list: listView
+            case .cards: cardsView
             }
-            .preference(key: SortingModePreferenceKey.self, value: appUserDefaults.preferredSortingMode)
-            .onPreferenceChange(SortingModePreferenceKey.self) { viewModel.sort = $0 }
-            .sheet(item: $presentedSheet, content: { Sheet(sheetType: $0) })
         }
+        .preference(key: SortingModePreferenceKey.self, value: appUserDefaults.preferredSortingMode)
+        .onPreferenceChange(SortingModePreferenceKey.self) { viewModel.sort = $0 }
+        .sheet(item: $presentedSheet, content: { Sheet(sheetType: $0) })
     }
     
     // MARK: - Private
@@ -80,7 +76,7 @@ struct ItemsList: View {
         let columns = [GridItem(.adaptive(minimum: 80, maximum: 120), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { item in
+            ForEach(viewModel.sortedItems, id: \.self) { item in
                 ItemGridView(namespace: itemsNamespace, item: item)
                     .onTapGesture {
                         presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))
@@ -92,7 +88,7 @@ struct ItemsList: View {
     
     private var listView: some View {
         LazyVStack(alignment: .leading, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { item in
+            ForEach(viewModel.sortedItems, id: \.self) { item in
                 ItemRowView(namespace: itemsNamespace, item: item)
                     .onTapGesture {
                         presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))
@@ -106,7 +102,7 @@ struct ItemsList: View {
         let columns = [GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium), GridItem(.flexible(), spacing: AppConfig.Design.Margins.medium)]
         
         return LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-            ForEach(viewModel.sortedItems) { item in
+            ForEach(viewModel.sortedItems, id: \.self) { item in
                 ItemCardView(namespace: itemsNamespace, item: item)
                     .onTapGesture {
                         presentedSheet = .itemDetails(item: item, associatedItems: viewModel.associatedObjects(item))

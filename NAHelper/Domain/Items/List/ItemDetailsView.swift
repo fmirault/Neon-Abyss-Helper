@@ -57,7 +57,7 @@ struct ItemDetailsView: View {
                         let columns = [GridItem(.adaptive(minimum: 40), spacing: AppConfig.Design.Margins.small)]
                         Text("Same type items").applyCardTitle()
                         LazyVGrid(columns: columns, spacing: AppConfig.Design.Margins.medium) {
-                            ForEach(associatedItems) { item in
+                            ForEach(associatedItems, id: \.self) { item in
                                 ItemDetailsGridView(item: item)
                                     .onTapGesture {
                                         self.associatedItems.replace(item, with: self.item)

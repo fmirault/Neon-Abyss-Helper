@@ -26,7 +26,6 @@ struct ItemCardView: View {
         VStack(spacing: AppConfig.Design.Margins.medium) {
             LocalFile(item.image).image
                 .applyImageStyle()
-                .matchedGeometryEffect(id: item.name, in: namespace)
             
             Text(item.name)
                 .applyCardTitle()
@@ -49,16 +48,10 @@ struct ItemCardView: View {
 struct ItemCardView_Previews: PreviewProvider {
     @Namespace private static var namespace
     static var previews: some View {
-        ForEach([AllDeviceNames.iPhone11.rawValue], id: \.self) { devicesName in
-            ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                ItemCardView(namespace: namespace, item: 🧬.brocoli)
-                    .previewLayout(.fixed(width: 200, height: 250))
-                    .padding()
-                    .preferredColorScheme(colorScheme)
-                    .previewDevice(PreviewDevice(rawValue: devicesName))
-                    .previewDisplayName(devicesName)
-            }
-        }
+        UIElementPreview(
+            ItemCardView(namespace: namespace, item: 🧬.brocoli)
+                .previewLayout(.fixed(width: 200, height: 250))
+        )
     }
 }
 #endif
