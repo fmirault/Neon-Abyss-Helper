@@ -15,6 +15,7 @@ struct ItemDetailsGridView: View {
             .shadow(opacity: 0.2)
             .background(Color.secondarySystemBackground)
             .cornerRadius(AppConfig.Design.CornerRadius.small)
+            .drawingGroup()
     }
 }
 

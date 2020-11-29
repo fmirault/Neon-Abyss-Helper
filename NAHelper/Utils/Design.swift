@@ -13,9 +13,9 @@ struct Design {
         tabBarAppearence.unselectedItemTintColor = .tertiaryLabel
         
         let navigationBarAppearence = UINavigationBar.appearance()
-        navigationBarAppearence.barTintColor = .systemBackground
         navigationBarAppearence.isTranslucent = true
-        navigationBarAppearence.tintColor = UIColor.darkText
+        navigationBarAppearence.backgroundColor = .clear
+        navigationBarAppearence.tintColor = UIColor.greyText
         
         guard let largeFontDescriptor = UIFontDescriptor
                 .preferredFontDescriptor(withTextStyle: .title1)
@@ -28,12 +28,12 @@ struct Design {
 
         navigationBarAppearence.largeTitleTextAttributes = [
             NSAttributedString.Key.font:UIFont.init(descriptor: largeFontDescriptor, size: 36),
-            NSAttributedString.Key.foregroundColor: UIColor.darkText
+            NSAttributedString.Key.foregroundColor: UIColor.greyText
         ]
 
         navigationBarAppearence.titleTextAttributes = [
             NSAttributedString.Key.font:UIFont.init(descriptor: titleFontDescriptor, size: 20),
-            NSAttributedString.Key.foregroundColor: UIColor.darkText
+            NSAttributedString.Key.foregroundColor: UIColor.greyText
         ]
     }
     

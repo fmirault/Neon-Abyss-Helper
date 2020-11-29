@@ -11,6 +11,7 @@ struct ItemGridView: View {
         LocalFile(item.image).image
             .applyImageStyle()
             .shadow(opacity: 0.2)
+            .drawingGroup()
     }
 }
 

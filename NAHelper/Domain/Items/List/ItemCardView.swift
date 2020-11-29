@@ -18,6 +18,7 @@ struct ItemCardView: View {
         .background(Color.secondarySystemBackground)
         .cornerRadius(AppConfig.Design.CornerRadius.medium)
         .shadow(opacity: 0.1)
+        .drawingGroup()
     }
     
     // MARK: - Private
